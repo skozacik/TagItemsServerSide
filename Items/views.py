@@ -17,7 +17,7 @@ def barcode(request,barcode):
       json_serializer.serialize(Beer.objects.filter(bc=barcode),stream=response,use_natural_keys=True)
       return response
     except Item.DoesNotExist:
-      #baseurl="https://www.googleapis.com/shopping/search/v1/public/products?key=AIzaSyAUo94RI7vDnSrpf0g8pjTit-sur0qoPJw&&country=US&q="
+    
       baseurl="https://www.googleapis.com/shopping/search/v1/public/products?key="
       baseurl+=key;
       baseurl+="&&country=US&q=" 
@@ -59,7 +59,9 @@ def search(request):
    if (len(search)):
      return response
    try:
-     baseurl="https://www.googleapis.com/shopping/search/v1/public/products?key=AIzaSyAUo94RI7vDnSrpf0g8pjTit-sur0qoPJw&&country=US&q="
+     baseurl="https://www.googleapis.com/shopping/search/v1/public/products?key="
+     baseurl+=key;
+     baseurl+="&&country=US&q="   
      baseurl+=searchvalue
      baseurl+="&alt=json";
      result=json.load(urllib.urlopen(baseurl));
