@@ -14,7 +14,7 @@ def barcode(request,barcode):
       JSONserializer=serializers.get_serializer("json")
       json_serializer=JSONserializer();
       response=HttpResponse()
-      json_serializer.serialize(Beer.objects.filter(bc=barcode),stream=response,use_natural_keys=True)
+      json_serializer.serialize(Item.objects.filter(bc=barcode),stream=response,use_natural_keys=True)
       return response
     except Item.DoesNotExist:
     
